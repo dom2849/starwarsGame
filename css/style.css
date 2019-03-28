@@ -1,0 +1,66 @@
+body{
+    background: #333;
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    letter-spacing: .4px;
+}
+
+.btn{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: #cccccc;
+}
+
+.btn:active{
+    color: #777;
+}
+
+.container{
+    max-width: 1000px;
+    margin: auto;
+}
+
+.wrapper,
+.game__header{
+    text-align: center;
+}
+
+.game__header{
+    margin-top: 5rem;
+}
+
+.game__players{
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.game__cards,
+.game__players{
+    display: flex;
+}
+
+.game__players > *,
+.game__cards > *{
+    flex: 1;
+}
+
+.game__card{
+    padding: 0 1.2rem;
+    margin: 0;
+}
+
+.game__card > *{
+    margin-bottom: 1rem;
+}
+
+.game__player {
+    font-size: 2rem;
+}
