@@ -1,26 +1,28 @@
 import StarwarsAPI from './starwarsAPI.js';
 import UserInterfaceHelper from './userInterfaceHelper.js';
 
-const numberOfStarwarsCharacters = 2;
+const numberOfStarwarsCharacters = 87;
 
 let starwarsAPI = new StarwarsAPI();
 let uiHelper = new UserInterfaceHelper();
 
 
-startRound();
-function startRound(){
+document.getElementById('play-round').addEventListener('click', playRound);
 
+function playRound(){
     uiHelper.clearCards();
     let humanCardNumber = generateRandomCharacterNumber();
     let computerCardNumber = generateRandomCharacterNumber();
     while (humanCardNumber === computerCardNumber){
         computerCardNumber = generateRandomCharacterNumber();
     }
-    starwarsAPI.getCharacters(humanCardNumber, computerCardNumber, recieveCharacters)
+    uiHelper.addSpinner('spinner');
+    starwarsAPI.getCharacters(humanCardNumber, computerCardNumber, recieveCharacters);
 }
 
 
 function recieveCharacters(error, humanCharacter, computerCharacter){
+    uiHelper.removeSpinner('spinner');    
     if (error) {
         console.log(error);
         return;

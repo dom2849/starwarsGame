@@ -18,6 +18,16 @@ UserInterfaceHelper.prototype.displayCharacters = function(humanCharacter, compu
     
 }
 
+UserInterfaceHelper.prototype.addSpinner = function(className){
+    let spinner = document.createElement('div');
+    spinner.className = className
+    document.querySelector('body').appendChild(spinner);
+}
+
+UserInterfaceHelper.prototype.removeSpinner = function(className){
+    document.querySelector(`.${className}`).remove();
+}
+
 function createCard(character){
     let gameCard = document.createElement('ul');
     gameCard.className = 'game__card';
