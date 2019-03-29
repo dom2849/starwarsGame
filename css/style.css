@@ -19,12 +19,14 @@ body{
     background: #cccccc;
 }
 
-.btn:active{
-    color: #777;
-}
-
 .emphasis{
     font-weight: bold;
+}
+
+.message,
+.wrapper,
+.game__header{
+    text-align: center;
 }
 
 .container{
@@ -32,10 +34,6 @@ body{
     margin: auto;
 }
 
-.wrapper,
-.game__header{
-    text-align: center;
-}
 
 .game__header{
     margin-top: 5rem;
@@ -70,7 +68,6 @@ body{
 }
 
 
-
 /* Spinner */
 .spinner{
     width: 60px;
@@ -78,7 +75,7 @@ body{
     /* background: #cccccc; */
     border-radius: 50%;
     border: 5px solid #333;
-    border-top-color: yellow;
+    border-top-color: #ADFF2F;
     position: absolute;
     left: 50%;
     margin-left: -35px;

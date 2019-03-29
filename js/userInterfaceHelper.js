@@ -8,6 +8,26 @@ UserInterfaceHelper.prototype.clearCards = function(){
     }
 }
 
+UserInterfaceHelper.prototype.addMessage = function(className, message){
+    let messageElelement = document.createElement('h2');
+    messageElelement.className = className;
+    messageElelement.textContent = message;
+    document.querySelector('.game').appendChild(messageElelement);
+}
+
+UserInterfaceHelper.prototype.removeElement = function(className){
+    let element = document.querySelector(`.${className}`);
+    if (element){
+        element.remove();
+    }
+}
+
+UserInterfaceHelper.prototype.addSpinner = function(className){
+    let spinner = document.createElement('div');
+    spinner.className = className
+    document.querySelector('body').appendChild(spinner);
+}
+
 UserInterfaceHelper.prototype.displayCharacters = function(humanCharacter, computerCharacter){
     let gameCards = document.querySelector('.game__cards');
     
@@ -18,23 +38,15 @@ UserInterfaceHelper.prototype.displayCharacters = function(humanCharacter, compu
     
 }
 
-UserInterfaceHelper.prototype.addSpinner = function(className){
-    let spinner = document.createElement('div');
-    spinner.className = className
-    document.querySelector('body').appendChild(spinner);
-}
-
-UserInterfaceHelper.prototype.removeSpinner = function(className){
-    document.querySelector(`.${className}`).remove();
-}
 
 function createCard(character){
     let gameCard = document.createElement('ul');
     gameCard.className = 'game__card';
-
+    let weight = (character.mass === 'unknown') ?  'unknown' : `${character.mass} kg`;
+    let height = (character.height === 'unknown') ?  'unknown' : `${character.height} cm`;
     gameCard.innerHTML = `<li>Character: ${character.name} </li>
-                         <li class = emphasis>Height: ${character.height} cm </li>
-                         <li>Weight: ${character.mass} kg </li>
+                         <li class = emphasis>Height: ${height} </li>
+                         <li>Weight: ${weight} </li>
                          <li>Hair Color: ${character.hair_color} </li>`;
 
     return gameCard;
