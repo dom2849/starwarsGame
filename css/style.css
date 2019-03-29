@@ -23,6 +23,10 @@ body{
     color: #777;
 }
 
+.emphasis{
+    font-weight: bold;
+}
+
 .container{
     max-width: 1000px;
     margin: auto;
@@ -38,17 +42,17 @@ body{
 }
 
 .game__players{
+    display: flex;
     text-align: center;
     margin: 1.5rem 0;
 }
 
-.game__cards,
-.game__players{
+.game__cards{
     display: flex;
+    justify-content: space-around;
 }
 
-.game__players > *,
-.game__cards > *{
+.game__players > *{
     flex: 1;
 }
 
