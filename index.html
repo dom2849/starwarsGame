@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="css/mobile.css">
     <title>Starwars Game</title>
 </head>
 
@@ -14,30 +15,45 @@
         <div class="game">
             <h1 class="game__header">Battle of Starwars Characters: Tallest Character Wins</h1>
             <div class="wrapper">
-                <button id = "play-round" class="btn">Play round</button>
+                <button id="play-round" class="btn">Play round</button>
             </div>
-            <div class="game__players">
-                <div class="game__player">Your Card</div>
-                <div class="game__player">Computer's Card</div>
-            </div>
-            <div class="game__cards">
-                <!-- <ul class="game__card">
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ex.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ex.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ex.</li>
+            <div class="game__round container">
+                <div class="player player--human"> Human </div>
+                <div class="player player--computer"> Computer </div>
+                <ul class="card card--human">
+                    <li>Lorem ipsum dolor.</li>
+                    <li>Lorem ips</li>
+                    <li>Lorem ipsum dolor.</li>
                 </ul>
-                <ul class="game__card">
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ex.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ex.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, ex.</li>
-                </ul> -->
+                <ul class="card card--computer">
+                    <li>Lorem ipsum dolor.</li>
+                    <li>Lorem ips</li>
+                    <li>Lorem ipsum dolor.</li>
+                </ul>
             </div>
+            <!-- <div class="group">
+                <div class="game__player human">
+                    <h2 class="player-name">Your Card</h2>
+                    <div class="player__card">
+                        <li>Lorem ipsum dolor.</li>
+                        <li>Lorem ips</li>
+                        <li>Lorem ipsum dolor.</li>
+                    </div>
+                </div>
+
+                <div class="game__player computer">
+                    <h2 class="player-name">Computer's Card</h2>
+                    <div class="player__card">
+                        <li>Lorem ipsum dolor.</li>
+                        <li>Lorem ips</li>
+                        <li>Lorem ipsum dolor.</li>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 
-    <!-- <div class="spinner"></div> -->
-
-    <script type = "module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

@@ -27,6 +27,7 @@ function cleanUpGameFromPreviousRound(){
     uiHelper.removeElement('message');
 }
 
+
 function recieveCharacters(error, humanCharacter, computerCharacter){
     uiHelper.removeElement('spinner');    
     if (error) {
@@ -35,13 +36,15 @@ function recieveCharacters(error, humanCharacter, computerCharacter){
     }
 
     else{ 
-        uiHelper.displayCharacters(humanCharacter, computerCharacter);
+        uiHelper.addCharacter(humanCharacter, 'card card--human');
+        uiHelper.addCharacter(computerCharacter, 'card card--computer');
         let winner = getWinner(humanCharacter, computerCharacter);
         uiHelper.addMessage('message', winner);
     }
 
     btnStart.disabled = false;
 }
+
 
 
 function generateRandomCharacterNumber(){

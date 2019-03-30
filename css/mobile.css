@@ -1,0 +1,13 @@
+.game__header{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.game__round{
+    grid-template-columns: 1fr;
+    grid-template-areas: 'human'
+                         'human-card'
+                         'computer'
+                         'computer-card'
+}
+

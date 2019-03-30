@@ -2,9 +2,9 @@ export default function UserInterfaceHelper(){
 }
 
 UserInterfaceHelper.prototype.clearCards = function(){
-    let gameCards = document.querySelector('.game__cards');
-    while (gameCards.firstChild){
-        gameCards.removeChild(gameCards.firstChild);
+    let gameCards = document.querySelectorAll('.card');
+    for (let i = 0; i<gameCards.length; i++){
+        gameCards[i].remove();
     }
 }
 
@@ -28,26 +28,20 @@ UserInterfaceHelper.prototype.addSpinner = function(className){
     document.querySelector('body').appendChild(spinner);
 }
 
-UserInterfaceHelper.prototype.displayCharacters = function(humanCharacter, computerCharacter){
-    let gameCards = document.querySelector('.game__cards');
-    
-    let humanCardElement = createCard(humanCharacter);
-    let computerCardElement = createCard(computerCharacter);
-    gameCards.appendChild(humanCardElement);
-    gameCards.appendChild(computerCardElement);
-    
+UserInterfaceHelper.prototype.addCharacter = function(character, cardClassList){
+    let gameRound = document.querySelector('.game__round');
+    let card = createCard(character, cardClassList);
+    gameRound.append(card);
 }
 
-
-function createCard(character){
+function createCard(character, cardClassList){
     let gameCard = document.createElement('ul');
-    gameCard.className = 'game__card';
+    gameCard.className = cardClassList;
     let weight = (character.mass === 'unknown') ?  'unknown' : `${character.mass} kg`;
     let height = (character.height === 'unknown') ?  'unknown' : `${character.height} cm`;
     gameCard.innerHTML = `<li>Character: ${character.name} </li>
                          <li class = emphasis>Height: ${height} </li>
                          <li>Weight: ${weight} </li>
                          <li>Hair Color: ${character.hair_color} </li>`;
-
     return gameCard;
 }
