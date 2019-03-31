@@ -36,8 +36,8 @@ function recieveCharacters(error, humanCharacter, computerCharacter){
     }
 
     else{ 
-        uiHelper.addCharacter(humanCharacter, 'card card--human');
-        uiHelper.addCharacter(computerCharacter, 'card card--computer');
+        uiHelper.addCharacter(humanCharacter, '.card--human');
+        uiHelper.addCharacter(computerCharacter, '.card--computer');
         let winner = getWinner(humanCharacter, computerCharacter);
         uiHelper.addMessage('message', winner);
     }
