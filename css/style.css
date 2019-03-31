@@ -36,9 +36,9 @@ body{
     text-align: center;
 }
 
-/* .message{
+.message{
     min-height: 48px;
-} */
+}
 
 .container{
     max-width: 800px;

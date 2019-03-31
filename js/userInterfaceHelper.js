@@ -1,18 +1,14 @@
 export default function UserInterfaceHelper(){
 }
 
-UserInterfaceHelper.prototype.clearCards = function(){
-    let gameCards = document.querySelectorAll('.card');
-    for (let i = 0; i<gameCards.length; i++){
-        gameCards[i].textContent = '';
-    }
+UserInterfaceHelper.prototype.clearContent = function(elementClassToClear){
+    let element = document.querySelectorAll(`${elementClassToClear}`);
+    element.textContent = '';
 }
 
-UserInterfaceHelper.prototype.addMessage = function(className, message){
-    let messageElelement = document.createElement('h2');
-    messageElelement.className = className;
+UserInterfaceHelper.prototype.addMessageContent = function(className, message){
+    let messageElelement = document.querySelector(`${className}`);
     messageElelement.textContent = message;
-    document.querySelector('.game').appendChild(messageElelement);
 }
 
 UserInterfaceHelper.prototype.removeElement = function(className){
@@ -28,7 +24,7 @@ UserInterfaceHelper.prototype.addSpinner = function(className){
     document.querySelector('body').appendChild(spinner);
 }
 
-UserInterfaceHelper.prototype.addCharacter = function(character, cardToAddTo){
+UserInterfaceHelper.prototype.addCharacterContent = function(character, cardToAddTo){
     let gameCard = document.querySelector(`${cardToAddTo}`);
     let cardContent = createCardContent(character, cardToAddTo);
     gameCard.innerHTML = cardContent;

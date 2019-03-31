@@ -23,8 +23,7 @@ function playRound(){
 
 function cleanUpGameFromPreviousRound(){
     btnStart.disabled = true;
-    uiHelper.clearCards();
-    uiHelper.removeElement('message');
+    uiHelper.clearContent('message');
 }
 
 
@@ -32,14 +31,14 @@ function recieveCharacters(error, humanCharacter, computerCharacter){
     uiHelper.removeElement('spinner');    
     if (error) {
         console.log(error);
-        uiHelper.addMessage('message', 'Something went wrong, please try again later.');
+        uiHelper.addMessageContent('message', 'Something went wrong, please try again later.');
     }
 
     else{ 
-        uiHelper.addCharacter(humanCharacter, '.card--human');
-        uiHelper.addCharacter(computerCharacter, '.card--computer');
+        uiHelper.addCharacterContent(humanCharacter, '.card--human');
+        uiHelper.addCharacterContent(computerCharacter, '.card--computer');
         let winner = getWinner(humanCharacter, computerCharacter);
-        uiHelper.addMessage('message', winner);
+        uiHelper.addMessageContent('.message', winner);
     }
 
     btnStart.disabled = false;
