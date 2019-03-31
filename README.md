@@ -1,6 +1,6 @@
-Starwars Game
+Star wars Game
 ======
-A game against the computer where two random starwar characters are drawn. The player who has the tallest character wins. 
+A game against the computer where two random star war characters are drawn. The player who has the tallest character wins. 
 
 Built With
 ------
@@ -10,5 +10,5 @@ Built With
 
 API Reference
 ------
-  * [Swapi](https://swapi.co/) - Starwars data
+  * [Swapi](https://swapi.co/) - Star wars data
 
