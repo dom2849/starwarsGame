@@ -3,54 +3,67 @@ import UserInterfaceHelper from './userInterfaceHelper.js';
 
 const numberOfStarwarsCharacters = 87;
 
-let starwarsAPI = new StarwarsAPI();
-let uiHelper = new UserInterfaceHelper();
+const starwarsAPI = new StarwarsAPI();
+const uiHelper = new UserInterfaceHelper();
 
 
-let btnStart = document.getElementById('play-round');
+const btnStart = document.getElementById('play-round');
 btnStart.addEventListener('click', playRound);
 
-function playRound(){
-    cleanUpGameFromPreviousRound();
-    let humanCardNumber = generateRandomCharacterNumber();
-    let computerCardNumber = generateRandomCharacterNumber();
-    while (humanCardNumber === computerCardNumber){
-        computerCardNumber = generateRandomCharacterNumber();
-    }
-    uiHelper.addSpinner('spinner');
-    starwarsAPI.getCharacters(humanCardNumber, computerCardNumber, recieveCharacters);
+function playRound() {
+    setUpUserInterfaceForBeginningOfRound();
+    let cardNumbers = getCardNumbers();
+    let humanCharacter;
+
+    starwarsAPI.getCharacter(cardNumbers[0])
+        .then(character => {
+            humanCharacter = character;
+            return starwarsAPI.getCharacter(cardNumbers[1]);
+        })
+        .then(computerCharacter => {
+            addCharacters(humanCharacter, computerCharacter);
+            determineWinner(humanCharacter, computerCharacter);
+        })
+        .catch(error => handleError(error))
+        .finally(() => cleanUpUserInterfaceForEndOfRound());
 }
 
-function cleanUpGameFromPreviousRound(){
+function getCardNumbers() {
+    let humanCardNumber = generateRandomCharacterNumber();
+    let computerCardNumber = generateRandomCharacterNumber();
+    while (humanCardNumber === computerCardNumber) {
+        computerCardNumber = generateRandomCharacterNumber();
+    }
+    return [humanCardNumber, computerCardNumber];
+}
+
+function handleError(error) {
+    console.log(error);
+    uiHelper.addMessageContent('.message', 'Something went wrong, please try again later.');
+}
+
+function setUpUserInterfaceForBeginningOfRound() {
+    uiHelper.addSpinner('spinner');
     btnStart.disabled = true;
     uiHelper.clearContent('message');
 }
 
-
-function recieveCharacters(error, humanCharacter, computerCharacter){
-    uiHelper.removeElement('spinner');    
-    if (error) {
-        console.log(error);
-        uiHelper.addMessageContent('message', 'Something went wrong, please try again later.');
-    }
-
-    else{ 
-        uiHelper.addCharacterContent(humanCharacter, '.card--human');
-        uiHelper.addCharacterContent(computerCharacter, '.card--computer');
-        let winner = getWinner(humanCharacter, computerCharacter);
-        uiHelper.addMessageContent('.message', winner);
-    }
-
+function cleanUpUserInterfaceForEndOfRound() {
+    uiHelper.removeElement('spinner');
     btnStart.disabled = false;
 }
 
-
-
-function generateRandomCharacterNumber(){
-    return Math.floor(Math.random() * numberOfStarwarsCharacters + 1);
+function addCharacters(humanCharacter, computerCharacter) {
+    uiHelper.addCharacterContent(humanCharacter, '.card--human');
+    uiHelper.addCharacterContent(computerCharacter, '.card--computer');
 }
 
-function getWinner(humanCharacter, computerCharacter){
+function determineWinner(humanCharacter, computerCharacter){
+    let winner = getWinner(humanCharacter, computerCharacter);
+    uiHelper.addMessageContent('.message', winner);
+}
+
+function getWinner(humanCharacter, computerCharacter) {
     let humanCharacterHeight = Number(humanCharacter.height);
     let computerCharacterHeight = Number(computerCharacter.height);
 
@@ -61,10 +74,7 @@ function getWinner(humanCharacter, computerCharacter){
     return (humanCharacterHeight > computerCharacterHeight) ? 'You win!' : 'Computer wins!';
 }
 
-
-
-
-
-
-
+function generateRandomCharacterNumber() {
+    return Math.floor(Math.random() * numberOfStarwarsCharacters + 1);
+}
 
